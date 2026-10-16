@@ -1,72 +1,71 @@
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { slide } from "@remotion/transitions/slide";
+import { wipe } from "@remotion/transitions/wipe";
 import { AbsoluteFill, useVideoConfig } from "remotion";
-import { Scene01Title } from "./scenes/Scene01Title";
-import { Scene02Problem } from "./scenes/Scene02Problem";
-import { Scene03Question } from "./scenes/Scene03Question";
-import { Scene04AI } from "./scenes/Scene04AI";
-import { Scene05Solutions } from "./scenes/Scene05Solutions";
-import { Scene06SmartLights } from "./scenes/Scene06SmartLights";
-import { Scene07Routing } from "./scenes/Scene07Routing";
-import { Scene08Analytics } from "./scenes/Scene08Analytics";
-import { Scene09Saudi } from "./scenes/Scene09Saudi";
-import { Scene10Conclusion } from "./scenes/Scene10Conclusion";
-import { Scene11Outro } from "./scenes/Scene11Outro";
-import { C } from "./theme";
+import { S01Opening } from "./shots/S01Opening";
+import { S02Problem } from "./shots/S02Problem";
+import { S03Question } from "./shots/S03Question";
+import { S04AI } from "./shots/S04AI";
+import { S05Three } from "./shots/S05Three";
+import { S06Lights } from "./shots/S06Lights";
+import { S07Routing } from "./shots/S07Routing";
+import { S08Control } from "./shots/S08Control";
+import { S09Riyadh } from "./shots/S09Riyadh";
+import { S10Conclusion } from "./shots/S10Conclusion";
+import { S11Outro } from "./shots/S11Outro";
 
-// 11 scenes, 10 transitions of 0.5s each.
-// Scene lengths sum to 125s; minus 5s of overlap = 120s total.
+// 11 shots, 10 transitions of 0.5s each.
+// Shot lengths sum to 125s; minus 5s of overlap = 120s total.
 export const TrafficVideo = () => {
   const { fps } = useVideoConfig();
   const t = linearTiming({ durationInFrames: 0.5 * fps });
-  const bg = { backgroundColor: C.cream };
+  const bg = { backgroundColor: "#000000" };
 
   return (
     <AbsoluteFill style={bg}>
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={7.5 * fps}>
-          <Scene01Title name="Title" style={bg} />
+          <S01Opening name="Opening" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={15.5 * fps}>
-          <Scene02Problem name="Problem" style={bg} />
+          <S02Problem name="Problem" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={10.5 * fps}>
-          <Scene03Question name="Question" style={bg} />
+          <S03Question name="Question" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={16.5 * fps}>
-          <Scene04AI name="AI analysis" style={bg} />
+          <S04AI name="AI analysis" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={4.5 * fps}>
-          <Scene05Solutions name="Three solutions" style={bg} />
+          <S05Three name="Three solutions" style={bg} />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={slide({ direction: "from-left" })} timing={t} />
+        <TransitionSeries.Transition presentation={wipe({ direction: "from-right" })} timing={t} />
         <TransitionSeries.Sequence durationInFrames={12.5 * fps}>
-          <Scene06SmartLights name="Smart lights" style={bg} />
+          <S06Lights name="Smart lights" style={bg} />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={slide({ direction: "from-left" })} timing={t} />
+        <TransitionSeries.Transition presentation={wipe({ direction: "from-right" })} timing={t} />
         <TransitionSeries.Sequence durationInFrames={12.5 * fps}>
-          <Scene07Routing name="Routing" style={bg} />
+          <S07Routing name="Routing" style={bg} />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={slide({ direction: "from-left" })} timing={t} />
+        <TransitionSeries.Transition presentation={wipe({ direction: "from-right" })} timing={t} />
         <TransitionSeries.Sequence durationInFrames={12.5 * fps}>
-          <Scene08Analytics name="Analytics" style={bg} />
+          <S08Control name="Control room" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={14.5 * fps}>
-          <Scene09Saudi name="Saudi Arabia" style={bg} />
+          <S09Riyadh name="Riyadh" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={11.5 * fps}>
-          <Scene10Conclusion name="Conclusion" style={bg} />
+          <S10Conclusion name="Conclusion" style={bg} />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t} />
         <TransitionSeries.Sequence durationInFrames={7 * fps}>
-          <Scene11Outro name="Outro" style={bg} />
+          <S11Outro name="Outro" style={bg} />
         </TransitionSeries.Sequence>
       </TransitionSeries>
     </AbsoluteFill>
